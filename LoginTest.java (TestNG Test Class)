@@ -1,0 +1,19 @@
+package testCases;
+
+import base.BaseTest;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import pages.LoginPage;
+
+public class LoginTest extends BaseTest {
+
+    @Test
+    public void verifyValidLogin() {
+        LoginPage login = new LoginPage(driver);
+        login.enterUsername("Admin");
+        login.enterPassword("admin123");
+        login.clickLogin();
+
+        Assert.assertTrue(login.isDashboardVisible(), "Dashboard should be visible after login");
+    }
+}
